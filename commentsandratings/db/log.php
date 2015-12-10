@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Commentsandratings module log events definition
  *
