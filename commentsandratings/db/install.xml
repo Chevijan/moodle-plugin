@@ -1,39 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="mod/commentsandratings/db" VERSION="20151209" COMMENT="XMLDB file for Moodle mod/commentsandratings"
+<XMLDB PATH="mod/commentandrating/db" VERSION="20160105" COMMENT="XMLDB file for Moodle mod/commentandrating"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="resource_comments" COMMENT="Contains resource comments">
+    <TABLE NAME="commentandrating" COMMENT="Table for comments and ratings plugin">
       <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="comment_parent" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="this is id of comment used for comments replies."/>
-        <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key for connecting with users table."/>
-        <FIELD NAME="resource_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key for resource which is commented."/>
-        <FIELD NAME="comment_author" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
-        <FIELD NAME="comments_aproved" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="If value of this field is 0, that is considered as 'false'. If value is 1, than it is considered as 'true'."/>
-        <FIELD NAME="comment_content" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
-        <FIELD NAME="comment_date" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="There is no datetime in mysql so int is used instead"/>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="id"/>
+        <FIELD NAME="course" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Course commentandrating activity belongs to"/>
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="user_id" TYPE="foreign" FIELDS="user_id" REFTABLE="mdl_user" REFFIELDS="id"/>
-        <KEY NAME="resource_id" TYPE="foreign" FIELDS="resource_id" REFTABLE="mdl_resource" REFFIELDS="id"/>
       </KEYS>
-    </TABLE>
-    <TABLE NAME="resource_ratings" COMMENT="Table for storing information about user ratings of resources.">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="resource_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key for connection with resource table."/>
-        <FIELD NAME="user_id" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false" COMMENT="Foreign key for connection with user table."/>
-        <FIELD NAME="rating_value" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="rating_date" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="10" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="resource_id" TYPE="foreign" FIELDS="resource_id" REFTABLE="mdl_resource" REFFIELDS="id"/>
-        <KEY NAME="user_id" TYPE="foreign" FIELDS="user_id" REFTABLE="mdl_user" REFFIELDS="id"/>
-      </KEYS>
+      <INDEXES>
+        <INDEX NAME="course" UNIQUE="false" FIELDS="course"/>
+      </INDEXES>
     </TABLE>
   </TABLES>
 </XMLDB>

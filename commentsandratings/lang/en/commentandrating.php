@@ -14,11 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+
 /**
- * Defines the version and other meta-info about the plugin
+ * English strings for commentandrating
  *
- * Setting the $plugin->version to 0 prevents the plugin from being installed.
- * See https://docs.moodle.org/dev/version.php for more info.
+ * You can have a rather longer description of the file as well,
+ * if you like, and it can span multiple lines.
  *
  * @package    mod_commentandrating
  * @copyright  2016 Vuk Nikolic <nikolicm.vuk@gmail.com>
@@ -27,8 +28,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'mod_commentandrating';
-$plugin->version = 2016010500;
-$plugin->release = 'v0.01';
-$plugin->requires = 2014051200;
-$plugin->maturity = MATURITY_ALPHA;
+$string['modulename'] = 'Comment and Rating';
+$string['modulenameplural'] = 'Comments and Ratings';
+$string['modulename_help'] = 'Use the Comment and Rating module for... ';
+$string['pluginadministration'] = 'Coment and Rating administration';
+$string['pluginname'] = 'Comment and Rating';
