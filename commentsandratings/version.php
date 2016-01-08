@@ -28,7 +28,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_commentandrating';
-$plugin->version = 2016010500;
+$plugin->version = 2016010700;
 $plugin->release = 'v0.01';
 $plugin->requires = 2014051200;
 $plugin->maturity = MATURITY_ALPHA;
