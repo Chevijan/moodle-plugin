@@ -36,85 +36,76 @@ function xmldb_commentandrating_upgrade($oldvesrion) {
     
     $dbman = $DB->get_manager();
     
-    if ($oldversion < 2016010700) {
-
+    if($oldversion < 2016011000) {
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_index('resourceindex', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+        
+        if ($dbman->index_exists($table, $field)) {
+            $dbman->drop_index($table, $field);
+        }
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_index('ratingindex', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+  
+        if ($dbman->index_exists($table, $field)) {
+            $dbman->drop_index($table, $field);
+        }
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_index('commentindex', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+  
+        if ($dbman->index_exists($table, $field)) {
+            $dbman->drop_index($table, $field);
+        }
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_field('comment', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+        
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_field('rating', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+        
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_field('resource', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+        
+        
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+        
+         // Define field course to be added to newmodule.
+        $table = new xmldb_table('commentandrating');
+        $field = new xmldb_field('approved', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'id');
+        
+        if ($dbman->field_exists($table, $field)) {
+            $dbman->drop_field($table, $field);
+        }
+        
         // Define field course to be added to newmodule.
         $table = new xmldb_table('commentandrating');
-        $field = new xmldb_field('comment', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'course');
+        $field = new xmldb_field('name', XMLDB_TYPE_TEXT, 'medium', null, null, null, null, 'course');
 
         // Add field course.
         if (!$dbman->field_exists($table, $field)) {
             $dbman->add_field($table, $field);
         }
-
-        // Define field intro to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $field = new xmldb_field('rating', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0', 'comment');
-
-        // Add field intro.
-        if (!$dbman->field_exists($table, $field)) {
-            $dbman->add_field($table, $field);
-        }
-
-        // Define field introformat to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $field = new xmldb_field('resource', XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0',
-            'rating');
-
-        // Add field introformat.
-        if (!$dbman->field_exists($table, $field)) {
-            $dbman->add_field($table, $field);
-        }
         
-        // Define field introformat to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $field = new xmldb_field('approved', XMLDB_TYPE_INTEGER, '1', XMLDB_UNSIGNED, XMLDB_NOTNULL, null, '0',
-            'resource');
-
-        // Add field introformat.
-        if (!$dbman->field_exists($table, $field)) {
-            $dbman->add_field($table, $field);
-        }
+        upgrade_mod_savepoint(true, 2016011000, 'commentandrating');
         
-        // Define index course (not unique) to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $index = new xmldb_index('commentindex', XMLDB_INDEX_NOTUNIQUE, array('comment'));
-
-        // Add index to course field.
-        if (!$dbman->index_exists($table, $index)) {
-            $dbman->add_index($table, $index);
-        }
-        
-        // Define index course (not unique) to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $index = new xmldb_index('ratingindex', XMLDB_INDEX_NOTUNIQUE, array('rating'));
-
-        // Add index to course field.
-        if (!$dbman->index_exists($table, $index)) {
-            $dbman->add_index($table, $index);
-        }
-        
-        // Define index course (not unique) to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $index = new xmldb_index('resourceindex', XMLDB_INDEX_NOTUNIQUE, array('resource'));
-
-        // Add index to course field.
-        if (!$dbman->index_exists($table, $index)) {
-            $dbman->add_index($table, $index);
-        }
-        
-        // Define index course (not unique) to be added to newmodule.
-        $table = new xmldb_table('commentandrating');
-        $index = new xmldb_index('courseindex', XMLDB_INDEX_NOTUNIQUE, array('course'));
-
-        // Add index to course field.
-        if (!$dbman->index_exists($table, $index)) {
-            $dbman->add_index($table, $index);
-        }
-
-        // Once we reach this point, we can store the new version and consider the module
-        // ... upgraded to the version 2007040100 so the next time this block is skipped.
-        upgrade_mod_savepoint(true, 2016010700, 'commentandrating');
     }
     
     return true;

@@ -33,3 +33,8 @@ $string['modulenameplural'] = 'Comments and Ratings';
 $string['modulename_help'] = 'Use the Comment and Rating module for... ';
 $string['pluginadministration'] = 'Coment and Rating administration';
 $string['pluginname'] = 'Comment and Rating';
+$string['commentandrating'] = 'commentandrating';
+$string['commentandratingplural'] = 'commentsandratings';
+$string['commentandrating_help'] = 'Use the commentandrating module for adding new comments and ratings';
+
+$string['name'] = 'name';
