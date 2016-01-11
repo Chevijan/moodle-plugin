@@ -14,27 +14,35 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-
 /**
- * English strings for commentandrating
- *
- * You can have a rather longer description of the file as well,
- * if you like, and it can span multiple lines.
+ * Defines the view event.
  *
  * @package    mod_commentandrating
  * @copyright  2016 Vuk Nikolic <nikolicm.vuk@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace mod_commentandrating\event;
+
 defined('MOODLE_INTERNAL') || die();
 
-$string['modulename'] = 'Comment and Rating';
-$string['modulenameplural'] = 'Comments and Ratings';
-$string['modulename_help'] = 'Use the Comment and Rating module for... ';
-$string['pluginadministration'] = 'Coment and Rating administration';
-$string['pluginname'] = 'Comment and Rating';
-$string['commentandrating'] = 'commentandrating';
-$string['commentandratingplural'] = 'commentsandratings';
-$string['commentandrating_help'] = 'Use the commentandrating module for adding new comments and ratings';
+/**
+ * The mod_commentandrating instance list viewed event class
+ *
+ * If the view mode needs to be stored as well, you may need to
+ * override methods get_url() and get_legacy_log_data(), too.
+ *
+ * @package    mod_commentandrating
+ * @copyright  2016 Your Name <nikolicm.vuk@gmail.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class course_module_viewed extends \core\event\course_module_viewed {
 
-$string['name'] = 'name';
+    /**
+     * Initialize the event
+     */
+    protected function init() {
+        $this->data['objecttable'] = 'commentandrating';
+        parent::init();
+    }
+}
