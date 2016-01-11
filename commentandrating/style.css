@@ -1,0 +1,22 @@
+
+/**
+ * @package   mod_commentandrating
+ * @copyright 2016 Julija Ciric <julijaciric93@gmail.com>
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+.container{
+	margin-left: 25px;
+}
+
+
+.ratings_hover{
+	opacity: 0.5;
+
+	cursor: pointer;
+}
+
+#tekst{
+	float: left;
+	margin-right: 10px;
+}

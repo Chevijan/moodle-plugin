@@ -63,8 +63,12 @@ $id_array = $DB->get_records('resource', null, $sort='', $fields='*', $limitfrom
 
 foreach ($id_array as $value) {
      echo $value->name . '<br>';
-     
+
+     echo '<br>';
+     require_once 'rating.php';
+     echo '<br>';
      echo '<a href="#">Comments</a>';
+ 
      echo '<hr>';
 }
 
