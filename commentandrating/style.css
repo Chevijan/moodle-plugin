@@ -6,7 +6,8 @@
  */
 
 .container{
-	margin-left: 25px;
+	margin-left: 2em;
+
 }
 
 
@@ -16,7 +17,15 @@
 	cursor: pointer;
 }
 
-#tekst{
+#text{
 	float: left;
 	margin-right: 10px;
 }
+
+#none{
+	position: inherit;
+	display:inline-block;
+	margin-left: 0.5em;
+}
+
+
