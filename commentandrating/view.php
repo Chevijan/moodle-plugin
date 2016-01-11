@@ -11,6 +11,7 @@
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 
+global $DB;
 $id = optional_param('id', 0, PARAM_INT); // Course_module ID, or
 $n  = optional_param('n', 0, PARAM_INT);  // ... commentandrating instance ID - it should be named as the first character of the module.
 
@@ -54,6 +55,18 @@ echo $OUTPUT->header();
 
 // Replace the following lines with you own code.
 echo $OUTPUT->heading($commentandrating->name);
+
+
+//Prikazivanje svih resursa, ovo ce sve ici u funkciju u locallib gde ce se 
+//izlistavati komentari za svaki resurs
+$id_array = $DB->get_records('resource', null, $sort='', $fields='*', $limitfrom=0, $limitnum=0);
+
+foreach ($id_array as $value) {
+     echo $value->name . '<br>';
+     
+     echo '<a href="#">Comments</a>';
+     echo '<hr>';
+}
 
 // Finish the page.
 echo $OUTPUT->footer();

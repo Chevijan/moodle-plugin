@@ -52,8 +52,6 @@ function commentadnrating_update_instance(stdClass $commentandrating, mod_commen
 
     $result = $DB->update_record('commentandrating', $commentandrating);
 
-    commentandrating_grade_item_update($commentandrating);
-
     return $result;
 }
 
@@ -272,3 +270,4 @@ function commentandrating_extend_navigation(navigation_node $navref, stdClass $c
 function commentandrating_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $commentandratingnode=null) {
     // TODO Delete this function and its docblock, or implement it.
 }
+
