@@ -40,3 +40,17 @@ $string['commentandrating_help'] = 'Use the commentandrating module for adding n
 $string['name'] = 'Name';
 $string['nocommentsandratings'] = 'No Comments and Ratings';
 $string['sectionname'] = 'Section Name';
+
+/**
+ * English strings for commentandrating
+ *
+ * You can have a rather longer description of the file as well,
+ * if you like, and it can span multiple lines.
+ *
+ * @package    mod_commentandrating
+ * @copyright  2016 Julija Ciric <julijaciric93@gmail.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+ $string['ratings']='Ratings: {$a->clicked_on}/5 from {$a->count} users';
+ $string['rate']='Your rating:';
+ 
