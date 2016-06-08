@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <XMLDB PATH="blocks/comments_and_ratings/db" VERSION="20160226" COMMENT="XMLDB file for Moodle blocks/comments_and_ratings">
+    <TABLES>
+      <TABLE NAME="block_comments_and_ratings" COMMENT="Default comment for block_comments_and_ratings, please edit me">
+        <FIELDS>
+          <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" />
+        </FIELDS>
+        <KEYS>
+          <KEY NAME="primary" TYPE="primary" FIELDS="id" />
+        </KEYS>
+      </TABLE>
+    </TABLES>
+  </XMLDB>
